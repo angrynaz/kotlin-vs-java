@@ -33,16 +33,9 @@ firstName = null // Compilation error!!
     ? bob.department.text.length()
     : null;
 </code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val length = bob?.department?.text?.length
-</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Elvis operator</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">if (nullableVariable != null) {
-    boolean success = nullableVariable.someMethodCall();
-    if (success) {
-        return success;
-    } else {
-        return fallbackIfNullMethodCall();
-    }
-} else {
-    return fallbackIfNullMethodCall();
-}</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val result = nullableVariable?.someMethodCall() ?: fallbackIfNullMethodCall()</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Strings I</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">String name = "John";
+</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Elvis operator</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">val result = Optional.ofNullable(nullableVariable)
+    .flatMap(v -> Optinal.ofNullable(v.someNullableMethodCall()))
+    .orElseGet(() -> fallbackIfNullMethodCall())</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val result = nullableVariable?.someNullableMethodCall() ?: fallbackIfNullMethodCall()</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Strings I</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">String name = "John";
 String lastName = "Smith";
 String text = "My name is: " + name + " " + lastName;
 String otherText = "My name is: " + name.substring(2);
