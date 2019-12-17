@@ -26,16 +26,13 @@ lastName = null
 
 var firstName: String
 firstName = null // Compilation error!!
-</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Null II</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">if (
+</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Null II</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">Integer length =
     bob != null
         && bob.department != null
         && bob.department.text != null
-    ) {
-  int length = bob.department.text.length();
-}
+    ? bob.department.text.length()
+    : null;
 </code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val length = bob?.department?.text?.length
-
-val length = text!!.length // NullPointerException if text == null
 </code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Elvis operator</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">if (nullableVariable != null) {
     boolean success = nullableVariable.someMethodCall()
     if (success) {
