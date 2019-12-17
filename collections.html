@@ -20,13 +20,14 @@ val map = mapOf(1 to "One",
 </code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val groups = numbers.groupBy {
     if (it % 2 == 0) "even" else "odd"
 }
-</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Collections</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">final List&ltInteger&gt evens = new ArrayList<>();
-final List&ltInteger&gt odds = new ArrayList<>();
-
-Map&ltBoolean, List&ltInteger&gt&gt map = numbers.stream()
+</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Collections</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">Map&ltBoolean, List&ltInteger&gt&gt partitioned = numbers.stream()
         .collect(
             Collectors.partitioningBy(num -> num % 2 == 0)
-        );</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val (evens, odds) = numbers.partition { it % 2 == 0 }
+        );
+
+final List&ltInteger&gt evens = partitioned.get(true);
+final List&ltInteger&gt odds = partitioned.get(false);
+</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val (evens, odds) = numbers.partition { it % 2 == 0 }
 
 
 
