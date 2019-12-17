@@ -52,18 +52,20 @@
  }
 </code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">class User(var name: String, var lastName: String = "")
 </code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Properties</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">public class Document {
+
     private String id = "00x";
 
-     public String getId() {
+    public String getId() {
          return id;
      }
 
-     public void setId(String id) {
-         if(id != null && !id.isEmpty()) {
+    public void setId(String id) {
+         if (id != null && !id.isEmpty()) {
              this.id = id;
          }
      }
- }
+
+}
 </code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">class Document{
     var id : String = "00x"
         set(value) {

@@ -7,7 +7,7 @@
     .side("Crisps")
     .makeMeASandwich()
 
-println(ooSandwich.receipt())
+System.out.println(ooSandwich.receipt())
 
 // https://www.kotlindays.com/2019/12/02/days-of-kotlin-a-dsl-for-everyone/index.html</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val dslSandwich = sandwich {
     with type "toasted"
@@ -62,15 +62,16 @@ println(dslSandwich.receipt())
             }
         }
     }
-}</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">III</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">val act = this
-val layout = new LinearLayout(act)
-layout.setOrientation(LinearLayout.VERTICAL)
+}</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">III</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">val act = this;
+val layout = new LinearLayout(act);
+layout.setOrientation(LinearLayout.VERTICAL);
 val name = new EditText(act);
 val button = new Button(act);
 button.setText("Say Hello");
-button.setOnClickListener {
-    Toast.makeText(act, "Hello, " + name.text + "!", Toast.LENGTH_SHORT)
-        .show()
+button.setOnClickListener(
+    () -> {
+        Toast.makeText(act, "Hello, " + name.text + "!", Toast.LENGTH_SHORT)
+           .show()
 }
 layout.addView(name);
 layout.addView(button);</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">verticalLayout {

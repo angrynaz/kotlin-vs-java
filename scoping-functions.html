@@ -12,9 +12,9 @@ original.also {
 }.also {
     println("The length of the String is ${it.length}") // 3
 }</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Apply</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">public MyFragment createInstance(Bundle args) {
-    val fragment = new MyFragment()
-    fragment.setArguments(args)
-    return fragment
+    val fragment = new MyFragment();
+    fragment.setArguments(args);
+    return fragment;
 }
 </code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">fun createInstance(args: Bundle) = MyFragment().apply { arguments = args }</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Let</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">val original = "abc"
 // Map the value and send to the next chain
@@ -48,34 +48,34 @@ original.let {
 }.let {
     println("The length of the String is $it") // 3
 }</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Let and apply</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">public File makeDir(String path) {
-    val result = new File(path)
-    result.mkdirs()
-    return result
+    val result = new File(path);
+    result.mkdirs();
+    return result;
 }</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">fun makeDir(path: String) =
         path.let { File(it) }
             .also { it.mkdirs() }</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Run</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">if (webview.settings != null) {
-    val settings = webview.settings
-    settings.javaScriptEnabled = true
-    settings.databaseEnabled = true
+    val settings = webview.settings;
+    settings.javaScriptEnabled = true;
+    settings.databaseEnabled = true;
 }</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">webview.settings?.run {
     javaScriptEnabled = true
     databaseEnabled = true
-}</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">TakeIf</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">public void displaySubstringPosition(String input, String sub) {
-    val index = input.indexOf(sub)
+}</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">TakeIf</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">public void displaySubstringPosition(final String input, final String sub) {
+    val index = input.indexOf(sub);
     if (index >= 0) {
-        System.out.println("The substring " + sub + "is found in " + input + ".")
-        System.out.println("Its start position is " + index + ".")
+        System.out.println("The substring " + sub + "is found in " + input + ".");
+        System.out.println("Its start position is " + index + ".");
     }
 }</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">fun displaySubstringPosition(input: String, sub: String) {
     input.indexOf(sub).takeIf { it >= 0 }?.let {
         println("The substring $sub is found in $input.")
         println("Its start position is $it.")
     }
-}</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">With</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">val numbers = List.of("one", "two", "three")
+}</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">With</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">val numbers = List.of("one", "two", "three");
 with(numbers) {
-    val firstItem = numbers.get(0)
-    val lastItem = numbers.get(numbers.size() - 1)
-    System.out.println("First item: " + firstItem + ", last item: " + lastItem)
+    val firstItem = numbers.get(0);
+    val lastItem = numbers.get(numbers.size() - 1);
+    System.out.println("First item: " + firstItem + ", last item: " + lastItem);
 }</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val numbers = mutableListOf("one", "two", "three")
 with(numbers) {
     val firstItem = first()
