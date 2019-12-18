@@ -56,22 +56,22 @@ suspend fun doBoth() = coroutineScope {
     }
 }
 
-</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">III</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">List<Callable<ContentDuration>> callables = Stream.of("Service A", "Service B", "Service C")
+</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">III</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">final var callables = Stream.of("Service A", "Service B", "Service C")
         .map(DummyService::new)
         .map(service -> (Callable<ContentDuration>) service::getContent)
         .collect(Collectors.toList());
 
-ExecutorService executor = Executors.newWorkStealingPool();
-List<ContentDuration> results = executor.invokeAll(callables).stream()
-.map(
-    future -> {
-         try {
-             return future.get();
-         } catch (InterruptedException | ExecutionException e) {
-             throw new RuntimeException(e);
-         }
-    }
-).collect(Collectors.toList());
+final var executor = Executors.newWorkStealingPool();
+final var results = executor.invokeAll(callables).stream()
+    .map(
+        future -> {
+             try {
+                 return future.get();
+             } catch (InterruptedException | ExecutionException e) {
+                 throw new RuntimeException(e);
+             }
+        }
+    ).collect(Collectors.toList());
 </code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val DummyService.asyncContent: Deferred<ContentDuration>
     get() = async(CommonPool) { content }
 
