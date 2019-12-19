@@ -38,7 +38,28 @@ final var odds = partitioned.get(false);
 users.sort(Comparator.comparing(user -> user.lastname));
 </code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val users = getUsers()
 users.sortedBy { it.lastname }
-</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">For</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">for (int i = 1; i < 11 ; i++) { }
+</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">CollectingAndThen</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">final var topPaidEmployee = Map.of(
+    "Alex", 250,
+    "Boss", 999,
+    "Chris", 400
+).entrySet()
+    .stream()
+    .filter(employee -> !employee.getValue().equals("Boss"))
+    .collect(
+        Collectors.collectingAndThen(
+            Collectors.maxBy(Comparator.comparing(Map.Entry::getValue)),
+            employee -> {
+                if (employee.isPresent() {
+                    return employee.getKey(); 
+                }
+                throw new IllegalStateException("No employees");
+            }
+        )
+    );</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">val topPaidEmployee = listOf("Alex" to 250, "Boss" to 999, "Chris" to 400)
+    .filter { it.first != "Boss" }
+    .maxBy { it.second }
+    ?.run { first }
+    ?: throw IllegalStateException("No employees")</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">For</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">for (int i = 1; i < 11 ; i++) { }
 
 for (int i = 1; i < 11 ; i+=2) { }
 
