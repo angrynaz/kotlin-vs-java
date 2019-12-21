@@ -4,7 +4,7 @@
 @RequiredArgsConstructor // Lombok
 @Data // Lombok
 public class AppProperties {
-    private final List<Location> location;
+    private final List&ltLocation&gt location;
     private final Git git;
     private final Integer limit;
     @NotBlank
@@ -42,7 +42,7 @@ public class Credentials {
 }</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">@ImmutableConfigurationProperties(prefix = "dependency.updates")
 @Validated
 data class AppProperties(
-    val locations: List<Location>,
+    val locations: List&ltLocation&gt,
     val git: Git,
     val limit: Int,
     @field:NotBlank

@@ -11,7 +11,7 @@ public synchronized String getValue() {
 }</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Map</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">final ObjectMapper mapper = new ObjectMapper(); // jackson's objectmapper
 final MyPojo pojo = mapper.convertValue(map, MyPojo.class);
 
-// https://stackoverflow.com/a/16430704/2441104</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">class User(val map: Map<String, Any?>) {
+// https://stackoverflow.com/a/16430704/2441104</code></pre></div><div class="col"><div class="lang">Kotlin</div><pre class="code"><code class="kotlin">class User(val map: Map&ltString, Any?&gt) {
     val name: String by map
     val age: Int     by map
 }</code></pre></div></div></div></div><div class="list-group-item border-0"><div class="title">Observable</div><div class="container-fluid"><div class="row"><div class="col"><div class="lang">Java</div><pre class="code"><code class="java">public class PCLNewsAgency {
